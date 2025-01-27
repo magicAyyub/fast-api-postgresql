@@ -2,7 +2,7 @@
 FROM python:3.12
 
 # Crée un répertoire de travail dans le conteneur
-WORKDIR /backend
+WORKDIR /
 
 # Copie les fichiers requirements.txt dans le répertoire de travail
 COPY requirements.txt .

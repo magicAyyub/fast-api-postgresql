@@ -70,6 +70,7 @@ class StudentBase(BaseModel):
 class ClassBase(BaseModel):
     name: str = Field(..., min_length=1, max_length=50)
     capacity: int = Field(..., gt=0)
+    grade: int = Field(..., gte=0)
     day_of_week: DayOfWeek
     start_time: str = Field(..., pattern='^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$')
     end_time: str = Field(..., pattern='^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$')

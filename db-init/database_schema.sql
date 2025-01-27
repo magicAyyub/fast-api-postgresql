@@ -42,6 +42,7 @@ CREATE TABLE Classes (
     id SERIAL PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
     capacity INT NOT NULL CHECK (capacity > 0),
+    grade INT NOT NULL CHECK (grade >= 0),
     registered INT DEFAULT 0 CHECK (registered >= 0),
     day_of_week VARCHAR(15) NOT NULL CHECK (day_of_week IN ('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday')),
     start_time TIME NOT NULL, -- 
