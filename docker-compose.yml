@@ -12,6 +12,8 @@ services:
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_NAME=${DB_NAME}
       - DB_PORT=5432
+    volumes:
+      - ./.env:/app/.env 
 
   db:
     image: postgres:13

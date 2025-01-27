@@ -1,18 +1,22 @@
 import os
+from pathlib import Path
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-# Charger les variables d'environnement
-load_dotenv()
+# Chemin du fichier .env (racine du projet)
+env_path = Path(__file__).parent.parent / ".env"
+load_dotenv(dotenv_path=env_path)
 
-# Extraire les variables d'environnement
 POSTGRES_USER = os.getenv("DB_USER")
 POSTGRES_PASSWORD = os.getenv("DB_PASSWORD")
 POSTGRES_DB = os.getenv("DB_NAME")
 DB_HOST = os.getenv("DB_HOST") or "db"
 DB_PORT = os.getenv("DB_PORT")
+
+if not all([POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_DB]):
+    raise ValueError("Une ou plusieurs variables d'environnement sont manquantes.")
 
 
 # Construire l'URL de connexion à la base de données
